@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @RestController
 
@@ -25,6 +27,12 @@ public class EmpController {
     public List<Employee> getAllEmployees() {
         return employeeService.readEmployee();
     }
+
+    @GetMapping("employees/{id}")
+    public Employee getMethodName(@PathVariable Long id) {
+        return employeeService.readSingleEmployee(id);
+    }
+    
 
     @PostMapping("employees")
     public String createEmployee(@RequestBody Employee employee) {
@@ -40,4 +48,9 @@ public class EmpController {
         return "Deletion Failed!";
     }
 
+    @PutMapping("path/{id}")
+    public String updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
+        employeeService.updateEmployee(id, employee);
+        return "Record Updated Successfully!";
+    }
 }
