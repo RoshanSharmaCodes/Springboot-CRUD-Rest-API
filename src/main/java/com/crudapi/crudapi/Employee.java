@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 public class Employee {
     private String Name;
     private String DeptName;
-    private int EmployeeID;
+    private String EmployeeID;
 }
